@@ -16,5 +16,9 @@ authors = [
 [features]
 
 [dependencies]
+async-std = { version = "1.7.0", features = ["attributes"] }
+tide = "0.15.0"
+chrono = "0.4.19"
+html-index = "0.3.4"
 
 [dev-dependencies]
