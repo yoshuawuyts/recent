@@ -6,9 +6,9 @@ use structopt::StructOpt;
 
 #[derive(Debug, StructOpt)]
 struct Opt {
-    #[structopt(short = "p", long = "port", default_value = "80")]
+    #[structopt(short = "p", long = "port", default_value = "80", env = "PORT")]
     port: u16,
-    #[structopt(short = "H", long = "host", default_value = "localhost")]
+    #[structopt(short = "H", long = "host", default_value = "127.0.0.1", env = "HOST")]
     host: String,
 }
 
