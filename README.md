@@ -46,6 +46,17 @@
 $ cargo add recent
 ```
 
+## Deployment
+
+Instructions to deploy to the remote server.
+```sh
+cargo build --release
+scp -i ~/.ssh/config target/release/recent recent:~/
+
+# on the server
+nohup recent &
+```
+
 ## Safety
 This crate uses ``#![deny(unsafe_code)]`` to ensure everything is implemented in
 100% Safe Rust.

@@ -2,6 +2,15 @@
 
 #![forbid(unsafe_code)]
 #![deny(missing_debug_implementations, nonstandard_style, rust_2018_idioms)]
+use structopt::StructOpt;
+
+#[derive(Debug, StructOpt)]
+struct Opt {
+    #[structopt(short = "p", long = "port", default_value = "80")]
+    port: u16,
+    #[structopt(short = "H", long = "host", default_value = "localhost")]
+    host: String,
+}
 
 use chrono::Duration;
 use tide::Status;
@@ -9,12 +18,13 @@ use tide::{http::Url, Request};
 
 #[async_std::main]
 async fn main() -> std::io::Result<()> {
+    let opt = Opt::from_args();
     tide::log::start();
     let mut app = tide::new();
     app.at("/").get(index);
     app.at("/:username/issues/weeks/:weeks").get(issues);
     app.at("/:username/pulls/weeks/:weeks").get(pulls);
-    app.listen("localhost:8080").await?;
+    app.listen((opt.host.as_str(), opt.port)).await?;
     Ok(())
 }
 
