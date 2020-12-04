@@ -74,7 +74,6 @@ pub async fn issues(req: Request<()>) -> tide::Result {
         "is:open",
         "is:pr",
         "archived:false",
-        "no:label",
         "sort:updated-desc",
         "-updated:<DATE",
     ]
@@ -101,7 +100,6 @@ pub async fn pulls(req: Request<()>) -> tide::Result {
         "is:open",
         "is:pr",
         "archived:false",
-        "no:label",
         "sort:updated-desc",
         "-updated:<DATE",
     ]
