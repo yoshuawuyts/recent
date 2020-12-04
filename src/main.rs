@@ -98,7 +98,6 @@ pub async fn pulls(req: Request<()>) -> tide::Result {
     let pairs = [
         "user:USERNAME",
         "is:open",
-        "is:pr",
         "archived:false",
         "sort:updated-desc",
         "-updated:<DATE",
